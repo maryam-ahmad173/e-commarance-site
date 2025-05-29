@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Checkout | Maryam Store</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    /* Reset & base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f7f8fa;
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Container */
+    .checkout-wrapper {
+      max-width: 700px;
+      margin: 60px auto 40px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 40px 45px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+      transition: box-shadow 0.3s ease;
+    }
+    .checkout-wrapper:hover {
+      box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+    }
+
+    /* Navigation buttons */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+    .nav-buttons a {
+      text-decoration: none;
+      background-color: #ff6b35;
+      color: #fff;
+      padding: 12px 26px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.35);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .nav-buttons a:hover {
+      background-color: #e85b20;
+      box-shadow: 0 6px 18px rgba(232, 91, 32, 0.5);
+    }
+
+    /* Heading */
+    h2 {
+      text-align: center;
+      font-weight: 700;
+      font-size: 2.25rem;
+      color: #2c3e50;
+      margin-bottom: 35px;
+      letter-spacing: 0.04em;
+    }
+
+    /* Form grid */
+    form {
+      display: grid;
+      gap: 25px;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: #555;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 14px 18px;
+      font-size: 1rem;
+      border: 1.8px solid #ddd;
+      border-radius: 10px;
+      background: #fafafa;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      font-family: inherit;
+      outline-offset: 2px;
+    }
+    input:focus, textarea:focus {
+      border-color: #ff6b35;
+      box-shadow: 0 0 10px rgba(255,107,53,0.4);
+      background: #fff;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* Order summary */
+    .order-summary {
+      background: #fff4e6;
+      border: 1.5px solid #ffd8b1;
+      padding: 28px 32px;
+      border-radius: 12px;
+      box-shadow: inset 0 0 8px rgba(255, 107, 53, 0.1);
+      font-weight: 600;
+      color: #a05b20;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+    .order-summary p {
+      margin: 10px 0;
+    }
+    .order-summary strong {
+      color: #d05c00;
+    }
+
+    /* Submit button */
+    .btn-submit {
+      background-color: #ff6b35;
+      color: white;
+      border: none;
+      padding: 16px 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 12px;
+      cursor: pointer;
+      width: 100%;
+      box-shadow: 0 6px 18px rgba(255, 107, 53, 0.5);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      letter-spacing: 0.04em;
+    }
+    .btn-submit:hover {
+      background-color: #e85b20;
+      box-shadow: 0 8px 25px rgba(232, 91, 32, 0.7);
+    }
+
+    /* Footer */
+    footer.footer {
+      background-color: #212529;
+      color: #ffffff;
+      padding: 60px 40px 20px;
+      font-size: 15px;
+      margin-top: auto;
+      box-shadow: inset 0 12px 14px -10px rgba(0,0,0,0.7);
+    }
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .footer-about, .footer-links, .footer-contact {
+      flex: 1;
+      min-width: 250px;
+    }
+    .footer h3, .footer h4 {
+      margin-bottom: 15px;
+      color: #ff6b35;
+      font-weight: 700;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .footer-about p {
+      line-height: 1.5;
+      opacity: 0.8;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-links ul li {
+      margin-bottom: 12px;
+    }
+    .footer-links ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    .footer-links ul li a:hover {
+      color: #ff6b35;
+    }
+    .footer-contact p {
+      margin: 8px 0;
+      font-weight: 500;
+    }
+    .social-icons {
+      margin-top: 15px;
+    }
+    .social-icons a {
+      color: #ffffff;
+      margin-right: 18px;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: #ff6b35;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 14px;
+      opacity: 0.7;
+      font-weight: 500;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .checkout-wrapper {
+        margin: 30px 20px 30px;
+        padding: 30px 25px;
+      }
+      .nav-buttons a {
+        padding: 10px 18px;
+        font-size: 14px;
+      }
+      h2 {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="checkout-wrapper">
+    <div class="nav-buttons">
+      <a href="cart.html">← Back to Cart</a>
+      <a href="index.html">Home →</a>
+    </div>
+
+    <h2>Checkout</h2>
+
+    <form id="checkout-form" autocomplete="off" novalidate>
+      <div>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Ali Khan" required autocomplete="name" />
+      </div>
+
+      <div>
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="+92 300 1234567" required autocomplete="tel" pattern="^\+?\d{7,15}$" title="Enter a valid phone number" />
+      </div>
+
+      <div>
+        <label for="address">Shipping Address</label>
+        <textarea id="address" name="address" rows="4" placeholder="123 Street, Lahore, Pakistan" required></textarea>
+      </div>
+
+      <div class="order-summary" aria-live="polite" aria-atomic="true">
+        <p><strong>Estimated Delivery:</strong> 3–5 business days</p>
+        <p><strong>Delivery Charges:</strong> $5.00</p>
+        <p><strong>Total Amount:</strong> $<span id="total-price">0.00</span></p>
+      </div>
+
+      <button type="submit" class="btn-submit" aria-label="Place your order now">Place Order</button>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-about">
+        <h3>Maryam Store</h3>
+        <p>Discover the latest in electronics and fashion. Quality, reliability, and fast delivery—always at your service.</p>
+      </div>
+      <div class="footer-links" role="navigation" aria-label="Quick Links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#products">Shop</a></li>
+          <li><a href="#categories">Categories</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>Email: <a href="mailto:support@maryamstore.com" style="color:#ff6b35;">support@maryamstore.com</a></p>
+        <p>Phone: <a href="tel:+923001234567" style="color:#ff6b35;">+92 300 1234567</a></p>
+        <p>Address: Lahore, Pakistan</p>
+        <div class="social-icons" aria-label="Social Media Links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Maryam Store. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Calculate and show total price
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    let total = cartItems.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
+    total += 5; // Delivery fee
+    document.getElementById("total-price").innerText = total.toFixed(2);
+
+    // Form submission
+    document
+      .getElementById("checkout-form")
+      .addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Basic validation for phone pattern
+        const phoneInput = document.getElementById("phone");
+        if (!phoneInput.checkValidity()) {
+          alert("Please enter a valid phone number.");
+          phoneInput.focus();
+          return;
+        }
+
+        alert("🎉 Thank you! Your order has been placed.");
+        localStorage.removeItem("cart");
+        window.location.href = "index.html";
+      });
+  </script>
+</body>
+</html>

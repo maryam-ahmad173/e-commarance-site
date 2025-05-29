@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mens Clothes - Maryam Store</title>
+  <style>
+    /* Reset and base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f9fa00;
+    color: #333333;
+  }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 20px 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.527);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff6b6b;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+  }
+  
+  nav ul li a {
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    background-color: #ff6b6b;
+    color: white;
+  }
+  
+  nav ul li a:active {
+    background-color: #e55353;
+    color: white;
+  }
+
+    /* Main section */
+    .product-detail {
+      padding: 60px 20px 80px;
+      max-width: 1280px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .product-detail h1 {
+      color: #f66000;
+      font-size: 3.2rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      user-select: none;
+    }
+
+    .product-detail p.desc {
+      max-width: 720px;
+      margin: 0 auto 50px;
+      font-size: 1.125rem;
+      color: #666;
+      font-weight: 500;
+      line-height: 1.75;
+      letter-spacing: 0.03em;
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 10px;
+    }
+
+    .product-item {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .product-item:hover,
+    .product-item:focus-within {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    }
+
+    .product-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      object-fit: cover;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 10px rgba(246, 96, 0, 0.15);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .product-item:hover img {
+      box-shadow: 0 8px 20px rgba(246, 96, 0, 0.3);
+    }
+
+    .price {
+      font-size: 1.3rem;
+      color: #f66000;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    .btn-cart {
+      background-color: #f66000;
+      border: none;
+      border-radius: 50px;
+      padding: 14px 32px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(246, 96, 0, 0.3);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      user-select: none;
+      outline-offset: 3px;
+      outline-color: transparent;
+      outline-style: solid;
+      width: 100%;
+      max-width: 240px;
+    }
+
+    .btn-cart:hover,
+    .btn-cart:focus {
+      background-color: #e05500;
+      box-shadow: 0 8px 24px rgba(224, 85, 0, 0.5);
+      outline-color: #ff6b6b;
+      transform: scale(1.05);
+      outline-style: solid;
+    }
+
+     /* Footer Styles */
+.footer {
+    background-color: #212529;
+    color: #ffffff;
+    padding: 60px 40px 20px;
+    font-size: 15px;
+  }
+  
+  .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .footer-about, .footer-links, .footer-contact {
+    flex: 1;
+    min-width: 250px;
+  }
+  
+  .footer h3, .footer h4 {
+    margin-bottom: 15px;
+    color: #ff6b6b;
+  }
+  
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-links ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-links ul li a {
+    color: #ffffff;
+    transition: color 0.3s;
+  }
+  
+  .footer-links ul li a:hover {
+    color: #ff6b6b;
+  }
+  
+  .footer-contact p {
+    margin: 6px 0;
+  }
+  
+  .social-icons {
+    margin-top: 15px;
+  }
+  
+  .social-icons a {
+    color: #ffffff;
+    margin-right: 15px;
+    font-size: 18px;
+    transition: color 0.3s;
+  }
+  
+  .social-icons a:hover {
+    color: #ff6b6b;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+  }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+
+      header {
+        padding: 16px 30px;
+      }
+
+      footer.footer {
+        padding: 60px 30px 30px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 20px;
+      }
+
+      .product-detail h1 {
+        font-size: 2.4rem;
+      }
+
+      .product-detail p.desc {
+        font-size: 1rem;
+      }
+
+      .btn-cart {
+        max-width: 100%;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .footer-about, .footer-links, .footer-contact {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="logo" tabindex="0">Maryam E-Store</div>
+  <nav>
+    <ul>
+      <li><a href="index.html" tabindex="0">Home</a></li>
+      <li><a href="#products" tabindex="0">Shop</a></li>
+      <li><a href="#categories" tabindex="0">Categories</a></li>
+      <li><a href="cart.html" tabindex="0">Cart</a></li>
+      <li><a href="contact.html" tabindex="0">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Main Product Detail Section -->
+<section class="product-detail" id="products">
+  <h1>Stylish Mens Clothes</h1>
+  <p class="desc">
+    Discover our Stylish and comfy Mens Wear Collection. From COLORFUL suits to breathable fabrics, perfect for every season. Suitable for all occasions and built for comfort and style.
+  </p>
+
+  <div class="gallery" role="list">
+    <article class="product-item" role="listitem" tabindex="0" aria-label="Mens Clothing 1, price Rs. 2,499">
+      <img src="mens1.jpeg" alt="Mens Clothing 1" loading="lazy" />
+      <p class="price">Rs. 2,499</p>
+      <button class="btn-cart" aria-label="Add Mens Clothing 1 to cart">Add to Cart</button>
+    </article>
+
+    <article class="product-item" role="listitem" tabindex="0" aria-label="Mens Clothing 2, price Rs. 1,699">
+      <img src="mens2.jpeg" alt="Mens Clothing 2" loading="lazy" />
+      <p class="price">Rs. 1,699</p>
+      <button class="btn-cart" aria-label="Add Mens Clothing 2 to cart">Add to Cart</button>
+    </article> 
+
+    <article class="product-item" role="listitem" tabindex="0" aria-label="Mens Clothing 3, price Rs. 3,899">
+      <img src="mens3.jpeg" alt="Mens Clothing 3" loading="lazy" />
+      <p class="price">Rs. 3,899</p>
+      <button class="btn-cart" aria-label="Add Mens Clothing 3 to cart">Add to Cart</button>
+    </article>
+
+    <article class="product-item" role="listitem" tabindex="0" aria-label="Mens Clothing 4, price Rs. 2,499">
+      <img src="mens4.jpeg" alt="Mens Clothing 4" loading="lazy" />
+      <p class="price">Rs. 2,499</p>
+      <button class="btn-cart" aria-label="Add Mens Clothing 4 to cart">Add to Cart</button>
+    </article>
+
+    <article class="product-item" role="listitem" tabindex="0" aria-label="Mens Clothing 5, price Rs. 1,799">
+      <img src="mens5.jpeg" alt="Mens Clothing 5" loading="lazy" />
+      <p class="price">Rs. 1,799</p>
+      <button class="btn-cart" aria-label="Add Mens Clothing 5 to cart">Add to Cart</button>
+    </article>
+
+    <article class="product-item" role="listitem" tabindex="0" aria-label="Mens Clothing 6, price Rs. 1,899">
+      <img src="mens6.jpeg" alt="Mens Clothing 6" loading="lazy" />
+      <p class="price">Rs. 1,899</p>
+      <button class="btn-cart" aria-label="Add Mens Clothing 6 to cart">Add to Cart</button>
+    </article>
+  </div>
+</section>
+
+<!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <h3>Maryam Store</h3>
+        <p>Discover the latest in electronics and fashion. Quality, reliability, and fast delivery—always at your service.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#products">Shop</a></li>
+          <li><a href="#categories">Categories</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>Email: support@maryamstore.com</p>
+        <p>Phone: +92 300 1234567</p>
+        <p>Address: Lahore, Pakistan</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Maryam Store. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+  // Handle Add to Cart clicks
+  const addToCartButtons = document.querySelectorAll('.btn-cart');
+
+  addToCartButtons.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      const productItem = btn.closest('.product-item');
+      const title = productItem.getAttribute('aria-label').split(',')[0];
+      const price = productItem.querySelector('.price').textContent;
+      const image = productItem.querySelector('img').getAttribute('src');
+
+      const item = {
+        title: title,
+        price: price,
+        image: image,
+        quantity: 1
+      };
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      // Check if item already exists
+      const existing = cart.find(i => i.title === item.title);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push(item);
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${item.title} added to cart!`);
+    });
+  });
+</script>
+
+</body>
+</html>
